@@ -29,9 +29,9 @@ namespace SensorGraph
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.SensorGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
 			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).BeginInit();
@@ -39,17 +39,17 @@ namespace SensorGraph
 			// 
 			// SensorGraph
 			// 
-			chartArea3.Name = "ChartArea1";
-			this.SensorGraph.ChartAreas.Add(chartArea3);
-			legend3.Name = "Legend1";
-			this.SensorGraph.Legends.Add(legend3);
+			chartArea7.Name = "ChartArea1";
+			this.SensorGraph.ChartAreas.Add(chartArea7);
+			legend7.Name = "Legend1";
+			this.SensorGraph.Legends.Add(legend7);
 			this.SensorGraph.Location = new System.Drawing.Point(12, 105);
 			this.SensorGraph.Name = "SensorGraph";
-			series3.ChartArea = "ChartArea1";
-			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series3.Legend = "Legend1";
-			series3.Name = "Series1";
-			this.SensorGraph.Series.Add(series3);
+			series7.ChartArea = "ChartArea1";
+			series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series7.Legend = "Legend1";
+			series7.Name = "Series1";
+			this.SensorGraph.Series.Add(series7);
 			this.SensorGraph.Size = new System.Drawing.Size(905, 280);
 			this.SensorGraph.TabIndex = 0;
 			this.SensorGraph.Text = "chart1";
@@ -58,10 +58,15 @@ namespace SensorGraph
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(931, 406);
+			this.ClientSize = new System.Drawing.Size(1920, 1080);
+			this.ControlBox = false;
 			this.Controls.Add(this.SensorGraph);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "MainFrm";
 			this.Text = "MainFrm";
+			this.TopMost = true;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrm_FormClosing);
 			this.Shown += new System.EventHandler(this.MainFrm_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).EndInit();
