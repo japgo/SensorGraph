@@ -29,55 +29,116 @@ namespace SensorGraph
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			this.SensorGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
-			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).BeginInit();
+			this.panelMainMenu = new System.Windows.Forms.Panel();
+			this.btnExit = new System.Windows.Forms.Button();
+			this.btnSetupMenu = new System.Windows.Forms.RadioButton();
+			this.btnMainMenu = new System.Windows.Forms.RadioButton();
+			this.panelView = new System.Windows.Forms.Panel();
+			this.panelTop = new System.Windows.Forms.Panel();
+			this.panelMainMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// SensorGraph
+			// panelMainMenu
 			// 
-			chartArea7.Name = "ChartArea1";
-			this.SensorGraph.ChartAreas.Add(chartArea7);
-			legend7.Name = "Legend1";
-			this.SensorGraph.Legends.Add(legend7);
-			this.SensorGraph.Location = new System.Drawing.Point(12, 105);
-			this.SensorGraph.Name = "SensorGraph";
-			series7.ChartArea = "ChartArea1";
-			series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series7.Legend = "Legend1";
-			series7.Name = "Series1";
-			this.SensorGraph.Series.Add(series7);
-			this.SensorGraph.Size = new System.Drawing.Size(905, 280);
-			this.SensorGraph.TabIndex = 0;
-			this.SensorGraph.Text = "chart1";
+			this.panelMainMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panelMainMenu.Controls.Add(this.btnExit);
+			this.panelMainMenu.Controls.Add(this.btnSetupMenu);
+			this.panelMainMenu.Controls.Add(this.btnMainMenu);
+			this.panelMainMenu.Dock = System.Windows.Forms.DockStyle.Right;
+			this.panelMainMenu.Location = new System.Drawing.Point(1709, 0);
+			this.panelMainMenu.Name = "panelMainMenu";
+			this.panelMainMenu.Size = new System.Drawing.Size(211, 1080);
+			this.panelMainMenu.TabIndex = 1;
+			// 
+			// btnExit
+			// 
+			this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnExit.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.btnExit.Location = new System.Drawing.Point(24, 946);
+			this.btnExit.Name = "btnExit";
+			this.btnExit.Size = new System.Drawing.Size(161, 105);
+			this.btnExit.TabIndex = 2;
+			this.btnExit.Text = "EXIT";
+			this.btnExit.UseVisualStyleBackColor = true;
+			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+			// 
+			// btnSetupMenu
+			// 
+			this.btnSetupMenu.Appearance = System.Windows.Forms.Appearance.Button;
+			this.btnSetupMenu.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.btnSetupMenu.Location = new System.Drawing.Point(26, 153);
+			this.btnSetupMenu.Name = "btnSetupMenu";
+			this.btnSetupMenu.Size = new System.Drawing.Size(161, 105);
+			this.btnSetupMenu.TabIndex = 1;
+			this.btnSetupMenu.TabStop = true;
+			this.btnSetupMenu.Text = "SETUP";
+			this.btnSetupMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.btnSetupMenu.UseVisualStyleBackColor = true;
+			this.btnSetupMenu.CheckedChanged += new System.EventHandler(this.btnMenu_CheckedChanged);
+			// 
+			// btnMainMenu
+			// 
+			this.btnMainMenu.Appearance = System.Windows.Forms.Appearance.Button;
+			this.btnMainMenu.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.btnMainMenu.Location = new System.Drawing.Point(26, 23);
+			this.btnMainMenu.Name = "btnMainMenu";
+			this.btnMainMenu.Size = new System.Drawing.Size(161, 105);
+			this.btnMainMenu.TabIndex = 0;
+			this.btnMainMenu.TabStop = true;
+			this.btnMainMenu.Text = "MAIN";
+			this.btnMainMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.btnMainMenu.UseVisualStyleBackColor = true;
+			this.btnMainMenu.CheckedChanged += new System.EventHandler(this.btnMenu_CheckedChanged);
+			// 
+			// panelView
+			// 
+			this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelView.Location = new System.Drawing.Point(0, 81);
+			this.panelView.Name = "panelView";
+			this.panelView.Size = new System.Drawing.Size(1709, 999);
+			this.panelView.TabIndex = 4;
+			// 
+			// panelTop
+			// 
+			this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelTop.Location = new System.Drawing.Point(0, 0);
+			this.panelTop.Name = "panelTop";
+			this.panelTop.Size = new System.Drawing.Size(1709, 81);
+			this.panelTop.TabIndex = 5;
 			// 
 			// MainFrm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.ClientSize = new System.Drawing.Size(1920, 1080);
 			this.ControlBox = false;
-			this.Controls.Add(this.SensorGraph);
+			this.Controls.Add(this.panelView);
+			this.Controls.Add(this.panelTop);
+			this.Controls.Add(this.panelMainMenu);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainFrm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MainFrm";
 			this.TopMost = true;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrm_FormClosing);
+			this.Load += new System.EventHandler(this.MainFrm_Load);
 			this.Shown += new System.EventHandler(this.MainFrm_Shown);
-			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).EndInit();
+			this.panelMainMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.DataVisualization.Charting.Chart SensorGraph;
 		private System.ComponentModel.BackgroundWorker bwGraphRefresh;
+		private System.Windows.Forms.Panel panelMainMenu;
+		private System.Windows.Forms.Panel panelView;
+		private System.Windows.Forms.RadioButton btnSetupMenu;
+		private System.Windows.Forms.RadioButton btnMainMenu;
+		private System.Windows.Forms.Button btnExit;
+		private System.Windows.Forms.Panel panelTop;
 	}
 }
 

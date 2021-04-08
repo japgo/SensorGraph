@@ -55,6 +55,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucGraph.Designer.cs">
+      <DependentUpon>ucGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMainView.Designer.cs">
+      <DependentUpon>ucMainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSetupView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSetupView.Designer.cs">
+      <DependentUpon>ucSetupView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +85,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ucGraph.resx">
+      <DependentUpon>ucGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMainView.resx">
+      <DependentUpon>ucMainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSetupView.resx">
+      <DependentUpon>ucSetupView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
