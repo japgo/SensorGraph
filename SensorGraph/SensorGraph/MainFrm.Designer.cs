@@ -29,6 +29,7 @@ namespace SensorGraph
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
 			this.panelMainMenu = new System.Windows.Forms.Panel();
 			this.btnExit = new System.Windows.Forms.Button();
@@ -36,11 +37,17 @@ namespace SensorGraph
 			this.btnMainMenu = new System.Windows.Forms.RadioButton();
 			this.panelView = new System.Windows.Forms.Panel();
 			this.panelTop = new System.Windows.Forms.Panel();
+			this.lbClock = new System.Windows.Forms.Label();
+			this.timerClock = new System.Windows.Forms.Timer(this.components);
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panelMainMenu.SuspendLayout();
+			this.panelTop.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelMainMenu
 			// 
+			this.panelMainMenu.BackColor = System.Drawing.SystemColors.Window;
 			this.panelMainMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panelMainMenu.Controls.Add(this.btnExit);
 			this.panelMainMenu.Controls.Add(this.btnSetupMenu);
@@ -93,6 +100,7 @@ namespace SensorGraph
 			// 
 			// panelView
 			// 
+			this.panelView.BackColor = System.Drawing.SystemColors.Window;
 			this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelView.Location = new System.Drawing.Point(0, 81);
 			this.panelView.Name = "panelView";
@@ -101,11 +109,42 @@ namespace SensorGraph
 			// 
 			// panelTop
 			// 
+			this.panelTop.BackColor = System.Drawing.SystemColors.Window;
+			this.panelTop.Controls.Add(this.lbClock);
+			this.panelTop.Controls.Add(this.pictureBox1);
 			this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panelTop.Location = new System.Drawing.Point(0, 0);
 			this.panelTop.Name = "panelTop";
 			this.panelTop.Size = new System.Drawing.Size(1709, 81);
 			this.panelTop.TabIndex = 5;
+			// 
+			// lbClock
+			// 
+			this.lbClock.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbClock.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbClock.Location = new System.Drawing.Point(335, 0);
+			this.lbClock.Name = "lbClock";
+			this.lbClock.Size = new System.Drawing.Size(118, 81);
+			this.lbClock.TabIndex = 1;
+			this.lbClock.Text = "2021-04-08 05:32:45";
+			this.lbClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// timerClock
+			// 
+			this.timerClock.Enabled = true;
+			this.timerClock.Interval = 1000;
+			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox1.Image = global::SensorGraph.Properties.Resources.huonisMark_1;
+			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(335, 81);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// MainFrm
 			// 
@@ -122,11 +161,12 @@ namespace SensorGraph
 			this.Name = "MainFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MainFrm";
-			this.TopMost = true;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrm_FormClosing);
 			this.Load += new System.EventHandler(this.MainFrm_Load);
 			this.Shown += new System.EventHandler(this.MainFrm_Shown);
 			this.panelMainMenu.ResumeLayout(false);
+			this.panelTop.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -139,6 +179,9 @@ namespace SensorGraph
 		private System.Windows.Forms.RadioButton btnMainMenu;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.Panel panelTop;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label lbClock;
+		private System.Windows.Forms.Timer timerClock;
 	}
 }
 

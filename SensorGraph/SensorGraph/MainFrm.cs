@@ -22,14 +22,24 @@ namespace SensorGraph
 			InitializeComponent();
 		}
 
-		private void MainFrm_Load( object sender, EventArgs e )
+		private void view_init()
 		{
 			ucMainView.Dock = DockStyle.Fill;
 			panelView.Controls.Add( ucMainView );
 
 			ucSetupView.Dock = DockStyle.Fill;
 			panelView.Controls.Add( ucSetupView );
+		}
 
+		private void clock_init()
+		{
+			lbClock.Text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" );
+		}
+
+		private void MainFrm_Load( object sender, EventArgs e )
+		{
+			view_init();
+			clock_init();
 
 
 			//SensorGraph.Series.Clear();
@@ -95,6 +105,11 @@ namespace SensorGraph
 		private void btnExit_Click( object sender, EventArgs e )
 		{
 			Close();
+		}
+
+		private void timerClock_Tick( object sender, EventArgs e )
+		{
+			lbClock.Text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" );
 		}
 	}
 }

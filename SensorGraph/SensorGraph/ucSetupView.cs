@@ -16,5 +16,13 @@ namespace SensorGraph
 		{
 			InitializeComponent();
 		}
+
+		private void btnSave_Click( object sender, EventArgs e )
+		{
+			System.Console.WriteLine( tbAxis1ServerIP );
+			System.Console.WriteLine( tbAxis1ServerPORT );
+
+			int port = Convert.ToInt32( tbAxis1ServerPORT.Text );
+		}
 	}
 }

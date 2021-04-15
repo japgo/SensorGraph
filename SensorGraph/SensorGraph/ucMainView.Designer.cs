@@ -30,6 +30,7 @@
 		{
 			this.panelSubMenu = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.btnStop = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
 			this.ucGraph5 = new SensorGraph.ucGraph();
 			this.ucGraph6 = new SensorGraph.ucGraph();
@@ -39,7 +40,6 @@
 			this.ucGraph4 = new SensorGraph.ucGraph();
 			this.ucGraph2 = new SensorGraph.ucGraph();
 			this.ucGraph1 = new SensorGraph.ucGraph();
-			this.btnStop = new System.Windows.Forms.Button();
 			this.panelSubMenu.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -74,6 +74,18 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(1707, 166);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
+			// btnStop
+			// 
+			this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnStop.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.btnStop.Location = new System.Drawing.Point(283, 30);
+			this.btnStop.Margin = new System.Windows.Forms.Padding(40, 30, 40, 30);
+			this.btnStop.Name = "btnStop";
+			this.btnStop.Size = new System.Drawing.Size(163, 106);
+			this.btnStop.TabIndex = 1;
+			this.btnStop.Text = "STOP";
+			this.btnStop.UseVisualStyleBackColor = true;
+			// 
 			// btnStart
 			// 
 			this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,6 +101,7 @@
 			// ucGraph5
 			// 
 			this.ucGraph5.Location = new System.Drawing.Point(1293, 517);
+			this.ucGraph5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph5.Name = "ucGraph5";
 			this.ucGraph5.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph5.TabIndex = 7;
@@ -96,6 +109,7 @@
 			// ucGraph6
 			// 
 			this.ucGraph6.Location = new System.Drawing.Point(868, 517);
+			this.ucGraph6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph6.Name = "ucGraph6";
 			this.ucGraph6.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph6.TabIndex = 6;
@@ -103,6 +117,7 @@
 			// ucGraph7
 			// 
 			this.ucGraph7.Location = new System.Drawing.Point(443, 517);
+			this.ucGraph7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph7.Name = "ucGraph7";
 			this.ucGraph7.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph7.TabIndex = 5;
@@ -110,6 +125,7 @@
 			// ucGraph8
 			// 
 			this.ucGraph8.Location = new System.Drawing.Point(18, 517);
+			this.ucGraph8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph8.Name = "ucGraph8";
 			this.ucGraph8.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph8.TabIndex = 4;
@@ -117,6 +133,7 @@
 			// ucGraph3
 			// 
 			this.ucGraph3.Location = new System.Drawing.Point(1293, 228);
+			this.ucGraph3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph3.Name = "ucGraph3";
 			this.ucGraph3.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph3.TabIndex = 3;
@@ -124,6 +141,7 @@
 			// ucGraph4
 			// 
 			this.ucGraph4.Location = new System.Drawing.Point(868, 228);
+			this.ucGraph4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph4.Name = "ucGraph4";
 			this.ucGraph4.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph4.TabIndex = 2;
@@ -131,6 +149,7 @@
 			// ucGraph2
 			// 
 			this.ucGraph2.Location = new System.Drawing.Point(443, 228);
+			this.ucGraph2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph2.Name = "ucGraph2";
 			this.ucGraph2.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph2.TabIndex = 1;
@@ -138,25 +157,15 @@
 			// ucGraph1
 			// 
 			this.ucGraph1.Location = new System.Drawing.Point(18, 228);
+			this.ucGraph1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ucGraph1.Name = "ucGraph1";
 			this.ucGraph1.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph1.TabIndex = 0;
 			// 
-			// btnStop
-			// 
-			this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnStop.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.btnStop.Location = new System.Drawing.Point(283, 30);
-			this.btnStop.Margin = new System.Windows.Forms.Padding(40, 30, 40, 30);
-			this.btnStop.Name = "btnStop";
-			this.btnStop.Size = new System.Drawing.Size(163, 106);
-			this.btnStop.TabIndex = 1;
-			this.btnStop.Text = "STOP";
-			this.btnStop.UseVisualStyleBackColor = true;
-			// 
 			// ucMainView
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.BackColor = System.Drawing.SystemColors.Window;
 			this.Controls.Add(this.panelSubMenu);
 			this.Controls.Add(this.ucGraph5);
 			this.Controls.Add(this.ucGraph6);
