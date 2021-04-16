@@ -17,9 +17,14 @@ namespace SensorGraph
 			InitializeComponent();
 		}
 
+		public void add_value( double _val )
+		{
+			
+		}
+
 		private void ucGraph_Load( object sender, EventArgs e )
 		{
-
+			graph.Series.Add( "Value" );
 		}
 	}
 }

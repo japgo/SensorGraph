@@ -32,14 +32,15 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.btnStop = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
+			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
 			this.ucGraph5 = new SensorGraph.ucGraph();
 			this.ucGraph6 = new SensorGraph.ucGraph();
 			this.ucGraph7 = new SensorGraph.ucGraph();
 			this.ucGraph8 = new SensorGraph.ucGraph();
-			this.ucGraph3 = new SensorGraph.ucGraph();
-			this.ucGraph4 = new SensorGraph.ucGraph();
-			this.ucGraph2 = new SensorGraph.ucGraph();
-			this.ucGraph1 = new SensorGraph.ucGraph();
+			this.ucGraph1_4 = new SensorGraph.ucGraph();
+			this.ucGraph1_3 = new SensorGraph.ucGraph();
+			this.ucGraph1_2 = new SensorGraph.ucGraph();
+			this.ucGraph1_1 = new SensorGraph.ucGraph();
 			this.panelSubMenu.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -85,6 +86,7 @@
 			this.btnStop.TabIndex = 1;
 			this.btnStop.Text = "STOP";
 			this.btnStop.UseVisualStyleBackColor = true;
+			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
 			// 
 			// btnStart
 			// 
@@ -97,6 +99,7 @@
 			this.btnStart.TabIndex = 0;
 			this.btnStart.Text = "START";
 			this.btnStart.UseVisualStyleBackColor = true;
+			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
 			// ucGraph5
 			// 
@@ -130,37 +133,37 @@
 			this.ucGraph8.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph8.TabIndex = 4;
 			// 
-			// ucGraph3
+			// ucGraph1_4
 			// 
-			this.ucGraph3.Location = new System.Drawing.Point(1293, 228);
-			this.ucGraph3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph3.Name = "ucGraph3";
-			this.ucGraph3.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph3.TabIndex = 3;
+			this.ucGraph1_4.Location = new System.Drawing.Point(1293, 228);
+			this.ucGraph1_4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph1_4.Name = "ucGraph1_4";
+			this.ucGraph1_4.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph1_4.TabIndex = 3;
 			// 
-			// ucGraph4
+			// ucGraph1_3
 			// 
-			this.ucGraph4.Location = new System.Drawing.Point(868, 228);
-			this.ucGraph4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph4.Name = "ucGraph4";
-			this.ucGraph4.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph4.TabIndex = 2;
+			this.ucGraph1_3.Location = new System.Drawing.Point(868, 228);
+			this.ucGraph1_3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph1_3.Name = "ucGraph1_3";
+			this.ucGraph1_3.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph1_3.TabIndex = 2;
 			// 
-			// ucGraph2
+			// ucGraph1_2
 			// 
-			this.ucGraph2.Location = new System.Drawing.Point(443, 228);
-			this.ucGraph2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph2.Name = "ucGraph2";
-			this.ucGraph2.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph2.TabIndex = 1;
+			this.ucGraph1_2.Location = new System.Drawing.Point(443, 228);
+			this.ucGraph1_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph1_2.Name = "ucGraph1_2";
+			this.ucGraph1_2.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph1_2.TabIndex = 1;
 			// 
-			// ucGraph1
+			// ucGraph1_1
 			// 
-			this.ucGraph1.Location = new System.Drawing.Point(18, 228);
-			this.ucGraph1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph1.Name = "ucGraph1";
-			this.ucGraph1.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph1.TabIndex = 0;
+			this.ucGraph1_1.Location = new System.Drawing.Point(18, 228);
+			this.ucGraph1_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph1_1.Name = "ucGraph1_1";
+			this.ucGraph1_1.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph1_1.TabIndex = 0;
 			// 
 			// ucMainView
 			// 
@@ -171,12 +174,13 @@
 			this.Controls.Add(this.ucGraph6);
 			this.Controls.Add(this.ucGraph7);
 			this.Controls.Add(this.ucGraph8);
-			this.Controls.Add(this.ucGraph3);
-			this.Controls.Add(this.ucGraph4);
-			this.Controls.Add(this.ucGraph2);
-			this.Controls.Add(this.ucGraph1);
+			this.Controls.Add(this.ucGraph1_4);
+			this.Controls.Add(this.ucGraph1_3);
+			this.Controls.Add(this.ucGraph1_2);
+			this.Controls.Add(this.ucGraph1_1);
 			this.Name = "ucMainView";
 			this.Size = new System.Drawing.Size(1709, 999);
+			this.Load += new System.EventHandler(this.ucMainView_Load);
 			this.panelSubMenu.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -185,10 +189,10 @@
 
 		#endregion
 
-		private ucGraph ucGraph1;
-		private ucGraph ucGraph2;
-		private ucGraph ucGraph3;
-		private ucGraph ucGraph4;
+		private ucGraph ucGraph1_1;
+		private ucGraph ucGraph1_2;
+		private ucGraph ucGraph1_4;
+		private ucGraph ucGraph1_3;
 		private ucGraph ucGraph5;
 		private ucGraph ucGraph6;
 		private ucGraph ucGraph7;
@@ -197,5 +201,6 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnStop;
+		private System.ComponentModel.BackgroundWorker bwGraphRefresh;
 	}
 }

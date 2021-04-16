@@ -30,7 +30,6 @@ namespace SensorGraph
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
 			this.panelMainMenu = new System.Windows.Forms.Panel();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.btnSetupMenu = new System.Windows.Forms.RadioButton();
@@ -38,8 +37,8 @@ namespace SensorGraph
 			this.panelView = new System.Windows.Forms.Panel();
 			this.panelTop = new System.Windows.Forms.Panel();
 			this.lbClock = new System.Windows.Forms.Label();
-			this.timerClock = new System.Windows.Forms.Timer(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.timerClock = new System.Windows.Forms.Timer(this.components);
 			this.panelMainMenu.SuspendLayout();
 			this.panelTop.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -129,12 +128,6 @@ namespace SensorGraph
 			this.lbClock.Text = "2021-04-08 05:32:45";
 			this.lbClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// timerClock
-			// 
-			this.timerClock.Enabled = true;
-			this.timerClock.Interval = 1000;
-			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
-			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -145,6 +138,12 @@ namespace SensorGraph
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
+			// 
+			// timerClock
+			// 
+			this.timerClock.Enabled = true;
+			this.timerClock.Interval = 1000;
+			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
 			// 
 			// MainFrm
 			// 
@@ -172,7 +171,6 @@ namespace SensorGraph
 		}
 
 		#endregion
-		private System.ComponentModel.BackgroundWorker bwGraphRefresh;
 		private System.Windows.Forms.Panel panelMainMenu;
 		private System.Windows.Forms.Panel panelView;
 		private System.Windows.Forms.RadioButton btnSetupMenu;

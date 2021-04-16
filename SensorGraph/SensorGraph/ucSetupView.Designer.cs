@@ -32,17 +32,17 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.tbAxis1ServerPORT = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.tbAxis1ServerIP = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.tbAxis2ServerIP = new System.Windows.Forms.TextBox();
+			this.tbAxis2ServerPORT = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.tbAxis1ServerIP = new System.Windows.Forms.TextBox();
-			this.tbAxis1ServerPORT = new System.Windows.Forms.TextBox();
-			this.tbAxis2ServerPORT = new System.Windows.Forms.TextBox();
-			this.tbAxis2ServerIP = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.panelSubMenu.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -112,6 +112,72 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(432, 99);
 			this.tableLayoutPanel2.TabIndex = 10;
 			// 
+			// tbAxis1ServerPORT
+			// 
+			this.tbAxis1ServerPORT.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbAxis1ServerPORT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.tbAxis1ServerPORT.Location = new System.Drawing.Point(176, 68);
+			this.tbAxis1ServerPORT.Name = "tbAxis1ServerPORT";
+			this.tbAxis1ServerPORT.Size = new System.Drawing.Size(252, 26);
+			this.tbAxis1ServerPORT.TabIndex = 9;
+			this.tbAxis1ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.label4.Location = new System.Drawing.Point(1, 65);
+			this.label4.Margin = new System.Windows.Forms.Padding(0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(171, 33);
+			this.label4.TabIndex = 7;
+			this.label4.Text = "SERVER PORT";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.label3.Location = new System.Drawing.Point(1, 32);
+			this.label3.Margin = new System.Windows.Forms.Padding(0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(171, 32);
+			this.label3.TabIndex = 6;
+			this.label3.Text = "SERVER IP";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.tableLayoutPanel2.SetColumnSpan(this.label1, 2);
+			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.label1.Location = new System.Drawing.Point(1, 1);
+			this.label1.Margin = new System.Windows.Forms.Padding(0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(430, 30);
+			this.label1.TabIndex = 5;
+			this.label1.Text = "1차축 통신 설정";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// tbAxis1ServerIP
+			// 
+			this.tbAxis1ServerIP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbAxis1ServerIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.tbAxis1ServerIP.Location = new System.Drawing.Point(176, 35);
+			this.tbAxis1ServerIP.Name = "tbAxis1ServerIP";
+			this.tbAxis1ServerIP.Size = new System.Drawing.Size(252, 26);
+			this.tbAxis1ServerIP.TabIndex = 8;
+			this.tbAxis1ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -133,67 +199,25 @@
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(432, 98);
 			this.tableLayoutPanel3.TabIndex = 11;
 			// 
-			// label1
+			// tbAxis2ServerIP
 			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.tableLayoutPanel2.SetColumnSpan(this.label1, 2);
-			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label1.Location = new System.Drawing.Point(1, 1);
-			this.label1.Margin = new System.Windows.Forms.Padding(0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(430, 30);
-			this.label1.TabIndex = 5;
-			this.label1.Text = "1차축 통신 설정";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.tbAxis2ServerIP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbAxis2ServerIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.tbAxis2ServerIP.Location = new System.Drawing.Point(176, 35);
+			this.tbAxis2ServerIP.Name = "tbAxis2ServerIP";
+			this.tbAxis2ServerIP.Size = new System.Drawing.Size(252, 26);
+			this.tbAxis2ServerIP.TabIndex = 11;
+			this.tbAxis2ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// label2
+			// tbAxis2ServerPORT
 			// 
-			this.label2.AutoSize = true;
-			this.label2.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.tableLayoutPanel3.SetColumnSpan(this.label2, 2);
-			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label2.Location = new System.Drawing.Point(1, 1);
-			this.label2.Margin = new System.Windows.Forms.Padding(0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(430, 30);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "2차축 통신 설정";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label3.Location = new System.Drawing.Point(1, 32);
-			this.label3.Margin = new System.Windows.Forms.Padding(0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(171, 32);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "SERVER IP";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label4.Location = new System.Drawing.Point(1, 65);
-			this.label4.Margin = new System.Windows.Forms.Padding(0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(171, 33);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "SERVER PORT";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.tbAxis2ServerPORT.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbAxis2ServerPORT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.tbAxis2ServerPORT.Location = new System.Drawing.Point(176, 68);
+			this.tbAxis2ServerPORT.Name = "tbAxis2ServerPORT";
+			this.tbAxis2ServerPORT.Size = new System.Drawing.Size(252, 26);
+			this.tbAxis2ServerPORT.TabIndex = 10;
+			this.tbAxis2ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label5
 			// 
@@ -225,45 +249,21 @@
 			this.label6.Text = "SERVER IP";
 			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// tbAxis1ServerIP
+			// label2
 			// 
-			this.tbAxis1ServerIP.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbAxis1ServerIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.tbAxis1ServerIP.Location = new System.Drawing.Point(176, 35);
-			this.tbAxis1ServerIP.Name = "tbAxis1ServerIP";
-			this.tbAxis1ServerIP.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis1ServerIP.TabIndex = 8;
-			this.tbAxis1ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// tbAxis1ServerPORT
-			// 
-			this.tbAxis1ServerPORT.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbAxis1ServerPORT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.tbAxis1ServerPORT.Location = new System.Drawing.Point(176, 68);
-			this.tbAxis1ServerPORT.Name = "tbAxis1ServerPORT";
-			this.tbAxis1ServerPORT.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis1ServerPORT.TabIndex = 9;
-			this.tbAxis1ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// tbAxis2ServerPORT
-			// 
-			this.tbAxis2ServerPORT.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbAxis2ServerPORT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.tbAxis2ServerPORT.Location = new System.Drawing.Point(176, 68);
-			this.tbAxis2ServerPORT.Name = "tbAxis2ServerPORT";
-			this.tbAxis2ServerPORT.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis2ServerPORT.TabIndex = 10;
-			this.tbAxis2ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// tbAxis2ServerIP
-			// 
-			this.tbAxis2ServerIP.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbAxis2ServerIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.tbAxis2ServerIP.Location = new System.Drawing.Point(176, 35);
-			this.tbAxis2ServerIP.Name = "tbAxis2ServerIP";
-			this.tbAxis2ServerIP.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis2ServerIP.TabIndex = 11;
-			this.tbAxis2ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.tableLayoutPanel3.SetColumnSpan(this.label2, 2);
+			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.label2.Location = new System.Drawing.Point(1, 1);
+			this.label2.Margin = new System.Windows.Forms.Padding(0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(430, 30);
+			this.label2.TabIndex = 6;
+			this.label2.Text = "2차축 통신 설정";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ucSetupView
 			// 

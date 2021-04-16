@@ -40,10 +40,10 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.SensorGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.graph)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -59,7 +59,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-			this.tableLayoutPanel1.Controls.Add(this.SensorGraph, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.graph, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -187,25 +187,25 @@
 			this.label2.Text = "MIN";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// SensorGraph
+			// graph
 			// 
 			chartArea1.Name = "ChartArea1";
-			this.SensorGraph.ChartAreas.Add(chartArea1);
-			this.tableLayoutPanel1.SetColumnSpan(this.SensorGraph, 2);
-			this.SensorGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.graph.ChartAreas.Add(chartArea1);
+			this.tableLayoutPanel1.SetColumnSpan(this.graph, 2);
+			this.graph.Dock = System.Windows.Forms.DockStyle.Fill;
 			legend1.Enabled = false;
 			legend1.Name = "Legend1";
-			this.SensorGraph.Legends.Add(legend1);
-			this.SensorGraph.Location = new System.Drawing.Point(3, 48);
-			this.SensorGraph.Name = "SensorGraph";
+			this.graph.Legends.Add(legend1);
+			this.graph.Location = new System.Drawing.Point(3, 48);
+			this.graph.Name = "graph";
 			series1.ChartArea = "ChartArea1";
 			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
 			series1.Legend = "Legend1";
 			series1.Name = "Series1";
-			this.SensorGraph.Series.Add(series1);
-			this.SensorGraph.Size = new System.Drawing.Size(323, 129);
-			this.SensorGraph.TabIndex = 2;
-			this.SensorGraph.Text = "chart1";
+			this.graph.Series.Add(series1);
+			this.graph.Size = new System.Drawing.Size(323, 129);
+			this.graph.TabIndex = 2;
+			this.graph.Text = "chart1";
 			// 
 			// label1
 			// 
@@ -233,7 +233,7 @@
 			this.Load += new System.EventHandler(this.ucGraph_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.SensorGraph)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.graph)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -248,7 +248,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.DataVisualization.Charting.Chart SensorGraph;
+		private System.Windows.Forms.DataVisualization.Charting.Chart graph;
 		private System.Windows.Forms.Label label1;
 	}
 }
