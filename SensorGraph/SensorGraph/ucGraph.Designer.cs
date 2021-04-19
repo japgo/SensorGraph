@@ -32,16 +32,16 @@
 			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.label9 = new System.Windows.Forms.Label();
+			this.lbReal = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
+			this.lbAve = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
+			this.lbMax = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.lbMin = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lbTitle = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.graph)).BeginInit();
 			this.SuspendLayout();
@@ -51,16 +51,16 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
-			this.tableLayoutPanel1.Controls.Add(this.label9, 1, 5);
+			this.tableLayoutPanel1.Controls.Add(this.lbReal, 1, 5);
 			this.tableLayoutPanel1.Controls.Add(this.label8, 0, 5);
-			this.tableLayoutPanel1.Controls.Add(this.label7, 1, 4);
+			this.tableLayoutPanel1.Controls.Add(this.lbAve, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
-			this.tableLayoutPanel1.Controls.Add(this.label5, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.lbMax, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.label3, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lbMin, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.graph, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.lbTitle, 0, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -75,19 +75,18 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(329, 360);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
-			// label9
+			// lbReal
 			// 
-			this.label9.AutoSize = true;
-			this.label9.BackColor = System.Drawing.SystemColors.Control;
-			this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label9.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label9.Location = new System.Drawing.Point(126, 315);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(200, 45);
-			this.label9.TabIndex = 12;
-			this.label9.Text = "12.345";
-			this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbReal.AutoSize = true;
+			this.lbReal.BackColor = System.Drawing.SystemColors.Control;
+			this.lbReal.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbReal.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbReal.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lbReal.Location = new System.Drawing.Point(126, 315);
+			this.lbReal.Name = "lbReal";
+			this.lbReal.Size = new System.Drawing.Size(200, 45);
+			this.lbReal.TabIndex = 12;
+			this.lbReal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label8
 			// 
@@ -103,19 +102,18 @@
 			this.label8.Text = "실시간";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label7
+			// lbAve
 			// 
-			this.label7.AutoSize = true;
-			this.label7.BackColor = System.Drawing.SystemColors.Control;
-			this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label7.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label7.Location = new System.Drawing.Point(126, 270);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(200, 45);
-			this.label7.TabIndex = 10;
-			this.label7.Text = "12.345";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbAve.AutoSize = true;
+			this.lbAve.BackColor = System.Drawing.SystemColors.Control;
+			this.lbAve.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbAve.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbAve.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lbAve.Location = new System.Drawing.Point(126, 270);
+			this.lbAve.Name = "lbAve";
+			this.lbAve.Size = new System.Drawing.Size(200, 45);
+			this.lbAve.TabIndex = 10;
+			this.lbAve.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label6
 			// 
@@ -131,19 +129,18 @@
 			this.label6.Text = "AVE";
 			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label5
+			// lbMax
 			// 
-			this.label5.AutoSize = true;
-			this.label5.BackColor = System.Drawing.SystemColors.Control;
-			this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label5.Location = new System.Drawing.Point(126, 225);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(200, 45);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "12.345";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbMax.AutoSize = true;
+			this.lbMax.BackColor = System.Drawing.SystemColors.Control;
+			this.lbMax.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbMax.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbMax.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lbMax.Location = new System.Drawing.Point(126, 225);
+			this.lbMax.Name = "lbMax";
+			this.lbMax.Size = new System.Drawing.Size(200, 45);
+			this.lbMax.TabIndex = 8;
+			this.lbMax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label4
 			// 
@@ -159,19 +156,18 @@
 			this.label4.Text = "MAX";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label3
+			// lbMin
 			// 
-			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.SystemColors.Control;
-			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.label3.Location = new System.Drawing.Point(126, 180);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(200, 45);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "12.345";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbMin.AutoSize = true;
+			this.lbMin.BackColor = System.Drawing.SystemColors.Control;
+			this.lbMin.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbMin.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbMin.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lbMin.Location = new System.Drawing.Point(126, 180);
+			this.lbMin.Name = "lbMin";
+			this.lbMin.Size = new System.Drawing.Size(200, 45);
+			this.lbMin.TabIndex = 6;
+			this.lbMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label2
 			// 
@@ -207,20 +203,20 @@
 			this.graph.TabIndex = 2;
 			this.graph.Text = "chart1";
 			// 
-			// label1
+			// lbTitle
 			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label1.Location = new System.Drawing.Point(3, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(323, 45);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "1차축 센서1 그래프";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbTitle.AutoSize = true;
+			this.lbTitle.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.tableLayoutPanel1.SetColumnSpan(this.lbTitle, 2);
+			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbTitle.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.lbTitle.Location = new System.Drawing.Point(3, 0);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(323, 45);
+			this.lbTitle.TabIndex = 4;
+			this.lbTitle.Text = "1차축 센서1 그래프";
+			this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ucGraph
 			// 
@@ -240,15 +236,15 @@
 
 		#endregion
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label lbReal;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label lbAve;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label lbMax;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lbMin;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.DataVisualization.Charting.Chart graph;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lbTitle;
 	}
 }

@@ -75,6 +75,10 @@ namespace SensorGraph
 
 		private void btnExit_Click( object sender, EventArgs e )
 		{
+			DialogResult dr = MessageBox.Show( "종료 하시겠습니까?", "EXIT", MessageBoxButtons.OKCancel, MessageBoxIcon.Question );
+			if( dr != DialogResult.OK )
+				return;
+
 			Close();
 		}
 

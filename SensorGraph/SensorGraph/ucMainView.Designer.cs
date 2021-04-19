@@ -33,10 +33,10 @@
 			this.btnStop = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
 			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
-			this.ucGraph5 = new SensorGraph.ucGraph();
-			this.ucGraph6 = new SensorGraph.ucGraph();
-			this.ucGraph7 = new SensorGraph.ucGraph();
-			this.ucGraph8 = new SensorGraph.ucGraph();
+			this.ucGraph2_4 = new SensorGraph.ucGraph();
+			this.ucGraph2_3 = new SensorGraph.ucGraph();
+			this.ucGraph2_2 = new SensorGraph.ucGraph();
+			this.ucGraph2_1 = new SensorGraph.ucGraph();
 			this.ucGraph1_4 = new SensorGraph.ucGraph();
 			this.ucGraph1_3 = new SensorGraph.ucGraph();
 			this.ucGraph1_2 = new SensorGraph.ucGraph();
@@ -101,37 +101,37 @@
 			this.btnStart.UseVisualStyleBackColor = true;
 			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
-			// ucGraph5
+			// ucGraph2_4
 			// 
-			this.ucGraph5.Location = new System.Drawing.Point(1293, 517);
-			this.ucGraph5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph5.Name = "ucGraph5";
-			this.ucGraph5.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph5.TabIndex = 7;
+			this.ucGraph2_4.Location = new System.Drawing.Point(1293, 517);
+			this.ucGraph2_4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph2_4.Name = "ucGraph2_4";
+			this.ucGraph2_4.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph2_4.TabIndex = 7;
 			// 
-			// ucGraph6
+			// ucGraph2_3
 			// 
-			this.ucGraph6.Location = new System.Drawing.Point(868, 517);
-			this.ucGraph6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph6.Name = "ucGraph6";
-			this.ucGraph6.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph6.TabIndex = 6;
+			this.ucGraph2_3.Location = new System.Drawing.Point(868, 517);
+			this.ucGraph2_3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph2_3.Name = "ucGraph2_3";
+			this.ucGraph2_3.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph2_3.TabIndex = 6;
 			// 
-			// ucGraph7
+			// ucGraph2_2
 			// 
-			this.ucGraph7.Location = new System.Drawing.Point(443, 517);
-			this.ucGraph7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph7.Name = "ucGraph7";
-			this.ucGraph7.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph7.TabIndex = 5;
+			this.ucGraph2_2.Location = new System.Drawing.Point(443, 517);
+			this.ucGraph2_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph2_2.Name = "ucGraph2_2";
+			this.ucGraph2_2.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph2_2.TabIndex = 5;
 			// 
-			// ucGraph8
+			// ucGraph2_1
 			// 
-			this.ucGraph8.Location = new System.Drawing.Point(18, 517);
-			this.ucGraph8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.ucGraph8.Name = "ucGraph8";
-			this.ucGraph8.Size = new System.Drawing.Size(399, 283);
-			this.ucGraph8.TabIndex = 4;
+			this.ucGraph2_1.Location = new System.Drawing.Point(18, 517);
+			this.ucGraph2_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.ucGraph2_1.Name = "ucGraph2_1";
+			this.ucGraph2_1.Size = new System.Drawing.Size(399, 283);
+			this.ucGraph2_1.TabIndex = 4;
 			// 
 			// ucGraph1_4
 			// 
@@ -170,10 +170,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.SystemColors.Window;
 			this.Controls.Add(this.panelSubMenu);
-			this.Controls.Add(this.ucGraph5);
-			this.Controls.Add(this.ucGraph6);
-			this.Controls.Add(this.ucGraph7);
-			this.Controls.Add(this.ucGraph8);
+			this.Controls.Add(this.ucGraph2_4);
+			this.Controls.Add(this.ucGraph2_3);
+			this.Controls.Add(this.ucGraph2_2);
+			this.Controls.Add(this.ucGraph2_1);
 			this.Controls.Add(this.ucGraph1_4);
 			this.Controls.Add(this.ucGraph1_3);
 			this.Controls.Add(this.ucGraph1_2);
@@ -193,10 +193,10 @@
 		private ucGraph ucGraph1_2;
 		private ucGraph ucGraph1_4;
 		private ucGraph ucGraph1_3;
-		private ucGraph ucGraph5;
-		private ucGraph ucGraph6;
-		private ucGraph ucGraph7;
-		private ucGraph ucGraph8;
+		private ucGraph ucGraph2_4;
+		private ucGraph ucGraph2_3;
+		private ucGraph ucGraph2_2;
+		private ucGraph ucGraph2_1;
 		private System.Windows.Forms.Panel panelSubMenu;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button btnStart;
