@@ -10,13 +10,7 @@ namespace SensorGraph
 		private ucMainView ucMainView = new ucMainView();
 		private ucSetupView ucSetupView = new ucSetupView();
 
-
-
-		List<string> sensor_names = new List<string>( new string[] { "CH 1", "CH 2", "CH 3", "CH 4" } );
-		int count = 1;
-
-
-
+		
 		public MainFrm()
 		{
 			InitializeComponent();

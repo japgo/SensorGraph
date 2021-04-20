@@ -32,7 +32,7 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.btnStop = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
-			this.bwGraphRefresh = new System.ComponentModel.BackgroundWorker();
+			this.bwGraphRefresh1 = new System.ComponentModel.BackgroundWorker();
 			this.ucGraph2_4 = new SensorGraph.ucGraph();
 			this.ucGraph2_3 = new SensorGraph.ucGraph();
 			this.ucGraph2_2 = new SensorGraph.ucGraph();
@@ -41,6 +41,7 @@
 			this.ucGraph1_3 = new SensorGraph.ucGraph();
 			this.ucGraph1_2 = new SensorGraph.ucGraph();
 			this.ucGraph1_1 = new SensorGraph.ucGraph();
+			this.bwGraphRefresh2 = new System.ComponentModel.BackgroundWorker();
 			this.panelSubMenu.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -165,6 +166,10 @@
 			this.ucGraph1_1.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph1_1.TabIndex = 0;
 			// 
+			// bwGraphRefresh2
+			// 
+			this.bwGraphRefresh2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BwGraphRefresh2_DoWork);
+			// 
 			// ucMainView
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -201,6 +206,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnStop;
-		private System.ComponentModel.BackgroundWorker bwGraphRefresh;
+		private System.ComponentModel.BackgroundWorker bwGraphRefresh1;
+		private System.ComponentModel.BackgroundWorker bwGraphRefresh2;
 	}
 }
