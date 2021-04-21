@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SensorGraph
@@ -10,7 +11,12 @@ namespace SensorGraph
 		private ucMainView ucMainView = new ucMainView();
 		private ucSetupView ucSetupView = new ucSetupView();
 
-		
+		public static string IP_Axis1 = "";
+		public static int PORT_Axis1 = 0;
+
+		public static string IP_Axis2 = "";
+		public static int PORT_Axis2 = 0;
+
 		public MainFrm()
 		{
 			InitializeComponent();
@@ -36,17 +42,6 @@ namespace SensorGraph
 		{
 			view_init();
 			clock_init();
-
-			//SensorGraph.Series.Clear();
-			//foreach( var name in sensor_names )
-			//{
-			//	SensorGraph.Series.Add( name );
-			//	SensorGraph.Series[ name ].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			//}
-
-
-
-
 		}
 
 		
@@ -79,6 +74,23 @@ namespace SensorGraph
 		private void timerClock_Tick( object sender, EventArgs e )
 		{
 			lbClock.Text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" );
+		}
+
+		private void lbClock_DoubleClick( object sender, EventArgs e )
+		{
+			if( Control.ModifierKeys == ( Keys.Control ) )
+			{
+				if( lbClock.BackColor == Color.Red )
+				{
+					lbClock.BackColor = Color.White;
+				}
+				else
+				{
+					lbClock.BackColor = Color.Red;
+				}
+
+				ucMainView.set_simul( lbClock.BackColor == Color.Red ? true : false );
+			}
 		}
 	}
 }

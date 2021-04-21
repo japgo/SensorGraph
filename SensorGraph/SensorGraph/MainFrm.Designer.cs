@@ -127,6 +127,7 @@ namespace SensorGraph
 			this.lbClock.TabIndex = 1;
 			this.lbClock.Text = "2021-04-08 05:32:45";
 			this.lbClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbClock.DoubleClick += new System.EventHandler(this.lbClock_DoubleClick);
 			// 
 			// pictureBox1
 			// 

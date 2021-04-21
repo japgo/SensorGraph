@@ -275,6 +275,7 @@
 			this.Controls.Add(this.panelSubMenu);
 			this.Name = "ucSetupView";
 			this.Size = new System.Drawing.Size(1709, 999);
+			this.Load += new System.EventHandler(this.ucSetupView_Load);
 			this.panelSubMenu.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net.Sockets;
+using System.Net;
 
 namespace SensorGraph
 {
@@ -93,6 +94,9 @@ namespace SensorGraph
 			end_time = DateTime.Now;
 			bwGraphRefresh1.CancelAsync();
 			bwGraphRefresh2.CancelAsync();
+
+			udp1.Close();
+			udp2.Close();
 		}
 
 		private void save_data( eAxis _axis, ref List<DateTime> times, ref List<double> g1, ref List<double> g2, ref List<double> g3, ref List<double> g4 )
@@ -135,7 +139,12 @@ namespace SensorGraph
 			simul = _simul;
 		}
 
-
+		private void log( string _log )
+		{
+			string filename = string.Format( "{0}\\{1}_log.log", System.IO.Directory.GetCurrentDirectory(), start_time.ToString( "yyyyMMddHHmmss" ) );
+			string text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss.fff" ) + " " + _log + "\r\n";
+			File.AppendAllText( filename, text, Encoding.UTF8 );
+		}
 
 
 
@@ -168,12 +177,15 @@ namespace SensorGraph
 
 		private void BwGraphRefresh1_DoWork( object sender, DoWorkEventArgs e )
 		{
+			IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse(MainFrm.IP_Axis1), MainFrm.PORT_Axis1 );
+			udp1.Client.Bind( epRemote );
+
 			while( true )
 			{
 				if( bwGraphRefresh1.CancellationPending )
 					break;
 
-				List<double> d = new List<double>() { 0, 0, 0, 0};
+				List<double> d = new List<double>() { 0, 0, 0, 0 };
 				System.Threading.Thread.Sleep( 1 );
 
 				if( simul )
@@ -187,8 +199,10 @@ namespace SensorGraph
 					d[3] = ( rand.Next( 5000 ) / 100.0 );
 				}
 				else
-				{
-
+				{					
+					byte[] bytes = udp1.Receive( ref epRemote );
+					string str = Encoding.Default.GetString( bytes );
+					log( str );
 				}
 
 				bwGraphRefresh1.ReportProgress( 0, d );
@@ -225,6 +239,9 @@ namespace SensorGraph
 
 		private void BwGraphRefresh2_DoWork( object sender, DoWorkEventArgs e )
 		{
+			IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
+			udp2.Client.Bind( epRemote );
+
 			while( true )
 			{
 				if( bwGraphRefresh2.CancellationPending )
@@ -245,7 +262,9 @@ namespace SensorGraph
 				}
 				else
 				{
-
+					byte[] bytes = udp2.Receive( ref epRemote );
+					string str = Encoding.Default.GetString( bytes );
+					log( str );
 				}
 
 				bwGraphRefresh2.ReportProgress( 0, d );
