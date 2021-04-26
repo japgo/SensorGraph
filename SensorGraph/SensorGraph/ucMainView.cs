@@ -23,7 +23,7 @@ namespace SensorGraph
 			Axis2,
 		}
 
-		UdpClient udp1 = new UdpClient();
+		
 		UdpClient udp2 = new UdpClient();
 
 		List<DateTime> times1 = new List<DateTime>();
@@ -40,6 +40,8 @@ namespace SensorGraph
 
 		DateTime start_time = new DateTime();
 		DateTime end_time = new DateTime();
+
+		private object lockObject = new object();
 
 		public ucMainView()
 		{
@@ -94,9 +96,6 @@ namespace SensorGraph
 			end_time = DateTime.Now;
 			bwGraphRefresh1.CancelAsync();
 			bwGraphRefresh2.CancelAsync();
-
-			udp1.Close();
-			udp2.Close();
 		}
 
 		private void save_data( eAxis _axis, ref List<DateTime> times, ref List<double> g1, ref List<double> g2, ref List<double> g3, ref List<double> g4 )
@@ -141,11 +140,29 @@ namespace SensorGraph
 
 		private void log( string _log )
 		{
-			string filename = string.Format( "{0}\\{1}_log.log", System.IO.Directory.GetCurrentDirectory(), start_time.ToString( "yyyyMMddHHmmss" ) );
-			string text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss.fff" ) + " " + _log + "\r\n";
-			File.AppendAllText( filename, text, Encoding.UTF8 );
+			lock( lockObject )
+			{
+				string filename = string.Format( "{0}\\{1}_log.log", System.IO.Directory.GetCurrentDirectory(), start_time.ToString( "yyyyMMddHHmmss" ) );
+				string text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss.fff" ) + " " + _log + "\r\n";
+				File.AppendAllText( filename, text, Encoding.UTF8 );
+			}
 		}
 
+		private double convert_byte_to_val( byte _high, byte _low )
+		{
+			short val = 0x0000;
+			val |= ( short )( _high << 8 );
+			val |= ( short )_low;
+
+			if( ( val & 0x8000 ) == 0x8000 )
+			{
+				val = ( short )( val ^ 0x8000 );
+				val *= -1;
+			}
+
+			double ret = val / 100.0;
+			return ret;
+		}
 
 
 
@@ -185,9 +202,6 @@ namespace SensorGraph
 
 		private void BwGraphRefresh1_DoWork( object sender, DoWorkEventArgs e )
 		{
-			IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse(MainFrm.IP_Axis1), MainFrm.PORT_Axis1 );
-			udp1.Client.Bind( epRemote );
-
 			while( true )
 			{
 				if( bwGraphRefresh1.CancellationPending )
@@ -198,79 +212,58 @@ namespace SensorGraph
 					List<double> d = new List<double>() { 0, 0, 0, 0 };
 					System.Threading.Thread.Sleep( 1 );
 
+					// 양수 byte[] bytes = { 0x02, 0x14, 0x81, 0x02, 0x14, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					// 음수 byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+
 					if( simul )
 					{
 						System.Threading.Thread.Sleep( 100 );
 
 						Random rand = new Random();
-						d[ 0 ] = ( rand.Next( 5000 ) / 100.0 );
-						d[ 1 ] = ( rand.Next( 5000 ) / 100.0 );
-						d[ 2 ] = ( rand.Next( 5000 ) / 100.0 );
-						d[ 3 ] = ( rand.Next( 5000 ) / 100.0 );
+
+						bytes[ 3 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 4 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 5 ] = ( byte )rand.Next( -128, 127 ); 
+						bytes[ 6 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 7 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 8 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 9 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 10 ] = ( byte )rand.Next( -128, 127 );
 					}
 					else
 					{
-						//byte[] bytes = udp1.Receive( ref epRemote );
+						IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis1 ), MainFrm.PORT_Axis1 );
+						UdpClient udp1 = new UdpClient( epRemote );
 
-						//byte[] bytes = { 0x02, 0x14, 0x81, 0x02, 0x14, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
-						byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+						bytes = udp1.Receive( ref epRemote );
+						udp1.Close();
 
 						string str = Encoding.Default.GetString( bytes );
-						log( str );
-
-						// 0x02    0x14    0x81    0x02    0x14    0x02    0x13    0x02    0x11    0x02    0x12    0x00    0xDF    0x02    0xE2    0x01    0x00    0x00    0xAD    0x03
-
-						if( bytes.Count() != 20 )
-							continue;
-
-						if( bytes[ 0 ] != 0x02 )
-							continue;
-
-						if( bytes[ 19 ] != 0x03 )
-							continue;
-
-						short ch1 = 0x0000;
-						ch1 |= ( short )( bytes[ 3 ] << 8 );
-						ch1 |= ( short )bytes[ 4 ];
-
-						if( (ch1 & 0x8000) == 0x8000 )
-						{
-							ch1 = ( short )(ch1 ^ 0x8000);
-							ch1 *= -1;
-						}
-
-						int ch2 = 0x0000;
-						ch2 |= bytes[ 5 ] << 8;
-						ch2 |= bytes[ 6 ];
-
-						int ch3 = 0x0000;
-						ch3 |= bytes[ 7 ] << 8;
-						ch3 |= bytes[ 8 ];
-
-						int ch4 = 0x0000;
-						ch4 |= bytes[ 9 ] << 8;
-						ch4 |= bytes[ 10 ];
-
-						//short s = 0x8064;
-						//s = Convert.ToInt16( "0x8064", 16 );
-						//s = (short)( ch1 << 16 );
-						//s = (short)(s << 16);
-						//s = Convert.ToInt16( (short)(ch1<<16) );
-						//s &= 0x00ff;
-						d[ 0 ] = ch1;
-						d[ 1 ] = ch2;
-						d[ 2 ] = ch3;
-						d[ 3 ] = ch4;
+						log( string.Format( "AXIS1 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str ) );
 					}
+
+					if( bytes.Count() != 20 )
+						continue;
+
+					if( bytes[ 0 ] != 0x02 )
+						continue;
+
+					if( bytes[ 19 ] != 0x03 )
+						continue;
+
+					d[ 0 ] = convert_byte_to_val( bytes[ 3 ], bytes[ 4 ] );
+					d[ 1 ] = convert_byte_to_val( bytes[ 5 ], bytes[ 6 ] );
+					d[ 2 ] = convert_byte_to_val( bytes[ 7 ], bytes[ 8 ] );
+					d[ 3 ] = convert_byte_to_val( bytes[ 9 ], bytes[ 10 ] );
 
 					bwGraphRefresh1.ReportProgress( 0, d );
 				}
 				catch( Exception ex )
 				{
 					Console.WriteLine( ex.Message );
+					log( string.Format( "AXIS1 IP:{0} PORT:{1} Exception:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, ex.Message ) );
 				}
-
-				
 			}
 		}
 
@@ -319,35 +312,68 @@ namespace SensorGraph
 
 		private void BwGraphRefresh2_DoWork( object sender, DoWorkEventArgs e )
 		{
-			IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
-			udp2.Client.Bind( epRemote );
-
 			while( true )
 			{
 				if( bwGraphRefresh2.CancellationPending )
 					break;
 
-				List<double> d = new List<double>() { 0, 0, 0, 0 };
-				System.Threading.Thread.Sleep( 1 );
-
-				if( simul )
+				try
 				{
-					System.Threading.Thread.Sleep( 100 );
+					List<double> d = new List<double>() { 0, 0, 0, 0 };
+					System.Threading.Thread.Sleep( 1 );
 
-					Random rand = new Random();
-					d[ 0 ] = ( rand.Next( 5000 ) / 100.0 );
-					d[ 1 ] = ( rand.Next( 5000 ) / 100.0 );
-					d[ 2 ] = ( rand.Next( 5000 ) / 100.0 );
-					d[ 3 ] = ( rand.Next( 5000 ) / 100.0 );
+					// 양수 byte[] bytes = { 0x02, 0x14, 0x81, 0x02, 0x14, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					// 음수 byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+
+					if( simul )
+					{
+						System.Threading.Thread.Sleep( 100 );
+
+						Random rand = new Random();
+
+						bytes[ 3 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 4 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 5 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 6 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 7 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 8 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 9 ] = ( byte )rand.Next( -128, 127 );
+						bytes[ 10 ] = ( byte )rand.Next( -128, 127 );
+					}
+					else
+					{
+						IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
+						UdpClient udp2 = new UdpClient( epRemote );
+
+						bytes = udp2.Receive( ref epRemote );
+						udp2.Close();
+
+						string str = Encoding.Default.GetString( bytes );
+						log( string.Format( "AXIS2 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str ) );
+					}
+
+					if( bytes.Count() != 20 )
+						continue;
+
+					if( bytes[ 0 ] != 0x02 )
+						continue;
+
+					if( bytes[ 19 ] != 0x03 )
+						continue;
+
+					d[ 0 ] = convert_byte_to_val( bytes[ 3 ], bytes[ 4 ] );
+					d[ 1 ] = convert_byte_to_val( bytes[ 5 ], bytes[ 6 ] );
+					d[ 2 ] = convert_byte_to_val( bytes[ 7 ], bytes[ 8 ] );
+					d[ 3 ] = convert_byte_to_val( bytes[ 9 ], bytes[ 10 ] );
+
+					bwGraphRefresh2.ReportProgress( 0, d );
 				}
-				else
+				catch( Exception ex )
 				{
-					byte[] bytes = udp2.Receive( ref epRemote );
-					string str = Encoding.Default.GetString( bytes );
-					log( str );
+					Console.WriteLine( ex.Message );
+					log( string.Format( "AXIS2 IP:{0} PORT:{1} Exception:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, ex.Message ) );
 				}
-
-				bwGraphRefresh2.ReportProgress( 0, d );
 			}
 		}
 
