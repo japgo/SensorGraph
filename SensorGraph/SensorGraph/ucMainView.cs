@@ -101,9 +101,6 @@ namespace SensorGraph
 			end_time = DateTime.Now;
 			bwGraphRefresh1.CancelAsync();
 			bwGraphRefresh2.CancelAsync();
-
-			tcp1.Close();
-			tcp2.Close();
 		}
 
 		private void save_data( eAxis _axis, ref List<DateTime> times, ref List<double> g1, ref List<double> g2, ref List<double> g3, ref List<double> g4 )
@@ -210,19 +207,6 @@ namespace SensorGraph
 
 		private void BwGraphRefresh1_DoWork( object sender, DoWorkEventArgs e )
 		{
-			if( simul != true )
-			{
-				IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis1 ), MainFrm.PORT_Axis1 );
-				tcp1 = new TcpClient();
-				tcp1.Connect( epRemote );
-
-				byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
-				tcp1.Client.Send( SendBytes );
-
-				string str = BitConverter.ToString( SendBytes );
-				log( string.Format( "AXIS1 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str ) );
-			}
-
 			while( true )
 			{
 				if( bwGraphRefresh1.CancellationPending )
@@ -235,7 +219,7 @@ namespace SensorGraph
 
 					// 양수 byte[] bytes = { 0x02, 0x14, 0x81, 0x02, 0x14, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
 					// 음수 byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
-					byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					byte[] bytes = new byte[ 20 ];
 
 					if( simul )
 					{
@@ -254,7 +238,20 @@ namespace SensorGraph
 					}
 					else
 					{
+						IPEndPoint epRemote = new IPEndPoint(IPAddress.Parse(MainFrm.IP_Axis1), MainFrm.PORT_Axis1);
+						tcp1 = new TcpClient();
+						tcp1.Connect(epRemote);
+
+						byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
+						tcp1.Client.Send(SendBytes);
+
+						string str_send = BitConverter.ToString(SendBytes);
+						//log(string.Format("AXIS1 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str_send));
+
+						System.Threading.Thread.Sleep(MainFrm.interval_msec);
+
 						tcp1.Client.Receive(bytes);
+						tcp1.Close();
 					}
 
 					string str = BitConverter.ToString( bytes );
@@ -329,19 +326,6 @@ namespace SensorGraph
 
 		private void BwGraphRefresh2_DoWork( object sender, DoWorkEventArgs e )
 		{
-			if( simul != true )
-			{
-				IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
-				tcp2 = new TcpClient();
-				tcp2.Connect( epRemote );
-
-				byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
-				tcp2.Client.Send( SendBytes );
-
-				string str = BitConverter.ToString( SendBytes );
-				log( string.Format( "AXIS2 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str ) );
-			}
-
 			while( true )
 			{
 				if( bwGraphRefresh2.CancellationPending )
@@ -354,7 +338,7 @@ namespace SensorGraph
 
 					// 양수 byte[] bytes = { 0x02, 0x14, 0x81, 0x02, 0x14, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
 					// 음수 byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
-					byte[] bytes = { 0x02, 0x14, 0x81, 0x80, 0x64, 0x02, 0x13, 0x02, 0x11, 0x02, 0x12, 0x00, 0xDF, 0x02, 0xE2, 0x01, 0x00, 0x00, 0xAD, 0x03 };
+					byte[] bytes = new byte[ 20 ];
 
 					if( simul )
 					{
@@ -373,6 +357,18 @@ namespace SensorGraph
 					}
 					else
 					{
+						IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
+						tcp2 = new TcpClient();
+						tcp2.Connect( epRemote );
+
+						byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
+						tcp2.Client.Send( SendBytes );
+
+						string str_send = BitConverter.ToString( SendBytes );
+						//log( string.Format( "AXIS2 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str_send ) );
+
+						System.Threading.Thread.Sleep( MainFrm.interval_msec );
+
 						tcp2.Client.Receive( bytes );
 					}
 

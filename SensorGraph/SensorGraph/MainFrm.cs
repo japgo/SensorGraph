@@ -17,6 +17,8 @@ namespace SensorGraph
 		public static string IP_Axis2 = "";
 		public static int PORT_Axis2 = 0;
 
+		public static int interval_msec = 100;
+
 		public MainFrm()
 		{
 			InitializeComponent();
