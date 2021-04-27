@@ -23,8 +23,9 @@ namespace SensorGraph
 			Axis2,
 		}
 
-		
-		UdpClient udp2 = new UdpClient();
+
+		TcpClient tcp1 = new TcpClient();
+		TcpClient tcp2 = new TcpClient();
 
 		List<DateTime> times1 = new List<DateTime>();
 		List<double> g1_1 = new List<double>();
@@ -87,8 +88,12 @@ namespace SensorGraph
 		private void btnStart_Click( object sender, EventArgs e )
 		{
 			start_time = DateTime.Now;
-			bwGraphRefresh1.RunWorkerAsync();
-			bwGraphRefresh2.RunWorkerAsync();
+
+			if( bwGraphRefresh1.IsBusy == false )
+				bwGraphRefresh1.RunWorkerAsync();
+
+			if( bwGraphRefresh2.IsBusy == false )
+				bwGraphRefresh2.RunWorkerAsync();
 		}
 
 		private void btnStop_Click( object sender, EventArgs e )
@@ -96,6 +101,9 @@ namespace SensorGraph
 			end_time = DateTime.Now;
 			bwGraphRefresh1.CancelAsync();
 			bwGraphRefresh2.CancelAsync();
+
+			tcp1.Close();
+			tcp2.Close();
 		}
 
 		private void save_data( eAxis _axis, ref List<DateTime> times, ref List<double> g1, ref List<double> g2, ref List<double> g3, ref List<double> g4 )
@@ -202,6 +210,19 @@ namespace SensorGraph
 
 		private void BwGraphRefresh1_DoWork( object sender, DoWorkEventArgs e )
 		{
+			if( simul != true )
+			{
+				IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis1 ), MainFrm.PORT_Axis1 );
+				tcp1 = new TcpClient();
+				tcp1.Connect( epRemote );
+
+				byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
+				tcp1.Client.Send( SendBytes );
+
+				string str = BitConverter.ToString( SendBytes );
+				log( string.Format( "AXIS1 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str ) );
+			}
+
 			while( true )
 			{
 				if( bwGraphRefresh1.CancellationPending )
@@ -233,15 +254,11 @@ namespace SensorGraph
 					}
 					else
 					{
-						IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis1 ), MainFrm.PORT_Axis1 );
-						UdpClient udp1 = new UdpClient( epRemote );
-
-						bytes = udp1.Receive( ref epRemote );
-						udp1.Close();
-
-						string str = Encoding.Default.GetString( bytes );
-						log( string.Format( "AXIS1 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str ) );
+						tcp1.Client.Receive(bytes);
 					}
+
+					string str = BitConverter.ToString( bytes );
+					log( string.Format( "AXIS1 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str ) );
 
 					if( bytes.Count() != 20 )
 						continue;
@@ -312,6 +329,19 @@ namespace SensorGraph
 
 		private void BwGraphRefresh2_DoWork( object sender, DoWorkEventArgs e )
 		{
+			if( simul != true )
+			{
+				IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
+				tcp2 = new TcpClient();
+				tcp2.Connect( epRemote );
+
+				byte[] SendBytes = { 0x02, 0x14, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x03 };
+				tcp2.Client.Send( SendBytes );
+
+				string str = BitConverter.ToString( SendBytes );
+				log( string.Format( "AXIS2 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str ) );
+			}
+
 			while( true )
 			{
 				if( bwGraphRefresh2.CancellationPending )
@@ -343,15 +373,11 @@ namespace SensorGraph
 					}
 					else
 					{
-						IPEndPoint epRemote = new IPEndPoint( IPAddress.Parse( MainFrm.IP_Axis2 ), MainFrm.PORT_Axis2 );
-						UdpClient udp2 = new UdpClient( epRemote );
-
-						bytes = udp2.Receive( ref epRemote );
-						udp2.Close();
-
-						string str = Encoding.Default.GetString( bytes );
-						log( string.Format( "AXIS2 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str ) );
+						tcp2.Client.Receive( bytes );
 					}
+
+					string str = BitConverter.ToString( bytes );
+					log( string.Format( "AXIS2 IP:{0} PORT:{1} RECV:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, str ) );
 
 					if( bytes.Count() != 20 )
 						continue;
