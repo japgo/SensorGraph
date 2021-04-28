@@ -35,7 +35,7 @@ namespace SensorGraph
 
 		private void clock_init()
 		{
-			lbClock.Text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" );
+			lbClock.Text = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" ); 
 		}
 
 		
@@ -44,6 +44,7 @@ namespace SensorGraph
 		{
 			view_init();
 			clock_init();
+			lbVersion.Text = "v" + typeof( MainFrm ).Assembly.GetName().Version.ToString();
 		}
 
 		

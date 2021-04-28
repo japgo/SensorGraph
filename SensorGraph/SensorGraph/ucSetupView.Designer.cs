@@ -92,6 +92,7 @@
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(163, 106);
 			this.btnSave.TabIndex = 0;
+			this.btnSave.TabStop = false;
 			this.btnSave.Text = "SAVE";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -124,7 +125,7 @@
 			this.tbAxis1ServerPORT.Location = new System.Drawing.Point(176, 68);
 			this.tbAxis1ServerPORT.Name = "tbAxis1ServerPORT";
 			this.tbAxis1ServerPORT.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis1ServerPORT.TabIndex = 9;
+			this.tbAxis1ServerPORT.TabIndex = 1;
 			this.tbAxis1ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label4
@@ -180,7 +181,7 @@
 			this.tbAxis1ServerIP.Location = new System.Drawing.Point(176, 35);
 			this.tbAxis1ServerIP.Name = "tbAxis1ServerIP";
 			this.tbAxis1ServerIP.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis1ServerIP.TabIndex = 8;
+			this.tbAxis1ServerIP.TabIndex = 0;
 			this.tbAxis1ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// tableLayoutPanel3
@@ -211,7 +212,7 @@
 			this.tbAxis2ServerIP.Location = new System.Drawing.Point(176, 35);
 			this.tbAxis2ServerIP.Name = "tbAxis2ServerIP";
 			this.tbAxis2ServerIP.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis2ServerIP.TabIndex = 11;
+			this.tbAxis2ServerIP.TabIndex = 2;
 			this.tbAxis2ServerIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// tbAxis2ServerPORT
@@ -221,7 +222,7 @@
 			this.tbAxis2ServerPORT.Location = new System.Drawing.Point(176, 68);
 			this.tbAxis2ServerPORT.Name = "tbAxis2ServerPORT";
 			this.tbAxis2ServerPORT.Size = new System.Drawing.Size(252, 26);
-			this.tbAxis2ServerPORT.TabIndex = 10;
+			this.tbAxis2ServerPORT.TabIndex = 3;
 			this.tbAxis2ServerPORT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label5
@@ -296,7 +297,7 @@
 			this.tbInterval.Location = new System.Drawing.Point(176, 35);
 			this.tbInterval.Name = "tbInterval";
 			this.tbInterval.Size = new System.Drawing.Size(252, 26);
-			this.tbInterval.TabIndex = 11;
+			this.tbInterval.TabIndex = 4;
 			this.tbInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label7

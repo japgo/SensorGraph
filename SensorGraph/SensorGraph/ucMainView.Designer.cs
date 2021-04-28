@@ -33,6 +33,13 @@
 			this.btnStop = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
 			this.bwGraphRefresh1 = new System.ComponentModel.BackgroundWorker();
+			this.bwGraphRefresh2 = new System.ComponentModel.BackgroundWorker();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.pbAxisConnState2 = new System.Windows.Forms.PictureBox();
+			this.pbAxisConnState1 = new System.Windows.Forms.PictureBox();
+			this.bwLog = new System.ComponentModel.BackgroundWorker();
 			this.ucGraph2_4 = new SensorGraph.ucGraph();
 			this.ucGraph2_3 = new SensorGraph.ucGraph();
 			this.ucGraph2_2 = new SensorGraph.ucGraph();
@@ -41,9 +48,11 @@
 			this.ucGraph1_3 = new SensorGraph.ucGraph();
 			this.ucGraph1_2 = new SensorGraph.ucGraph();
 			this.ucGraph1_1 = new SensorGraph.ucGraph();
-			this.bwGraphRefresh2 = new System.ComponentModel.BackgroundWorker();
 			this.panelSubMenu.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbAxisConnState2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbAxisConnState1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelSubMenu
@@ -85,6 +94,7 @@
 			this.btnStop.Name = "btnStop";
 			this.btnStop.Size = new System.Drawing.Size(163, 106);
 			this.btnStop.TabIndex = 1;
+			this.btnStop.TabStop = false;
 			this.btnStop.Text = "STOP";
 			this.btnStop.UseVisualStyleBackColor = true;
 			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
@@ -98,9 +108,83 @@
 			this.btnStart.Name = "btnStart";
 			this.btnStart.Size = new System.Drawing.Size(163, 106);
 			this.btnStart.TabIndex = 0;
+			this.btnStart.TabStop = false;
 			this.btnStart.Text = "START";
 			this.btnStart.UseVisualStyleBackColor = true;
 			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+			// 
+			// bwGraphRefresh2
+			// 
+			this.bwGraphRefresh2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BwGraphRefresh2_DoWork);
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+			this.tableLayoutPanel2.Controls.Add(this.pbAxisConnState2, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.pbAxisConnState1, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label2, 1, 1);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(1397, 20);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 3;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(295, 109);
+			this.tableLayoutPanel2.TabIndex = 9;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label1.Location = new System.Drawing.Point(62, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(230, 36);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "Ch1 Controller State";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.label2.Location = new System.Drawing.Point(62, 36);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(230, 36);
+			this.label2.TabIndex = 3;
+			this.label2.Text = "Ch2 Controller State";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// pbAxisConnState2
+			// 
+			this.pbAxisConnState2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbAxisConnState2.Image = global::SensorGraph.Properties.Resources.gray;
+			this.pbAxisConnState2.Location = new System.Drawing.Point(3, 39);
+			this.pbAxisConnState2.Name = "pbAxisConnState2";
+			this.pbAxisConnState2.Size = new System.Drawing.Size(53, 30);
+			this.pbAxisConnState2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pbAxisConnState2.TabIndex = 1;
+			this.pbAxisConnState2.TabStop = false;
+			// 
+			// pbAxisConnState1
+			// 
+			this.pbAxisConnState1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.pbAxisConnState1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbAxisConnState1.Image = global::SensorGraph.Properties.Resources.green;
+			this.pbAxisConnState1.Location = new System.Drawing.Point(3, 3);
+			this.pbAxisConnState1.Name = "pbAxisConnState1";
+			this.pbAxisConnState1.Size = new System.Drawing.Size(53, 30);
+			this.pbAxisConnState1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pbAxisConnState1.TabIndex = 0;
+			this.pbAxisConnState1.TabStop = false;
+			// 
+			// bwLog
+			// 
+			this.bwLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwLog_DoWork);
 			// 
 			// ucGraph2_4
 			// 
@@ -166,14 +250,11 @@
 			this.ucGraph1_1.Size = new System.Drawing.Size(399, 283);
 			this.ucGraph1_1.TabIndex = 0;
 			// 
-			// bwGraphRefresh2
-			// 
-			this.bwGraphRefresh2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BwGraphRefresh2_DoWork);
-			// 
 			// ucMainView
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.SystemColors.Window;
+			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.panelSubMenu);
 			this.Controls.Add(this.ucGraph2_4);
 			this.Controls.Add(this.ucGraph2_3);
@@ -188,6 +269,10 @@
 			this.Load += new System.EventHandler(this.ucMainView_Load);
 			this.panelSubMenu.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbAxisConnState2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbAxisConnState1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -208,5 +293,11 @@
 		private System.Windows.Forms.Button btnStop;
 		private System.ComponentModel.BackgroundWorker bwGraphRefresh1;
 		private System.ComponentModel.BackgroundWorker bwGraphRefresh2;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.PictureBox pbAxisConnState2;
+		private System.Windows.Forms.PictureBox pbAxisConnState1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.ComponentModel.BackgroundWorker bwLog;
 	}
 }

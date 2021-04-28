@@ -83,6 +83,10 @@ namespace SensorGraph
 			ucGraph2_2.set_title( "2차축 센서2 그래프" );
 			ucGraph2_3.set_title( "2차축 센서3 그래프" );
 			ucGraph2_4.set_title( "2차축 센서4 그래프" );
+
+
+			pbAxisConnState1.Image = SensorGraph.Properties.Resources.gray;
+			pbAxisConnState2.Image = SensorGraph.Properties.Resources.gray;
 		}
 
 		private void btnStart_Click( object sender, EventArgs e )
@@ -223,9 +227,11 @@ namespace SensorGraph
 
 					if( simul )
 					{
-						System.Threading.Thread.Sleep( 100 );
+						System.Threading.Thread.Sleep( MainFrm.interval_msec );
 
 						Random rand = new Random();
+
+						bytes[ 0 ] = 0x02;
 
 						bytes[ 3 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 4 ] = ( byte )rand.Next( -128, 127 );
@@ -235,6 +241,8 @@ namespace SensorGraph
 						bytes[ 8 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 9 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 10 ] = ( byte )rand.Next( -128, 127 );
+
+						bytes[ 19 ] = 0x03;
 					}
 					else
 					{
@@ -248,7 +256,7 @@ namespace SensorGraph
 						string str_send = BitConverter.ToString(SendBytes);
 						//log(string.Format("AXIS1 IP:{0} PORT:{1} SEND:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, str_send));
 
-						System.Threading.Thread.Sleep(MainFrm.interval_msec);
+						System.Threading.Thread.Sleep( MainFrm.interval_msec );
 
 						tcp1.Client.Receive(bytes);
 						tcp1.Close();
@@ -272,9 +280,12 @@ namespace SensorGraph
 					d[ 3 ] = convert_byte_to_val( bytes[ 9 ], bytes[ 10 ] );
 
 					bwGraphRefresh1.ReportProgress( 0, d );
+
+					pbAxisConnState1.Image = SensorGraph.Properties.Resources.green;
 				}
 				catch( Exception ex )
 				{
+					pbAxisConnState1.Image = SensorGraph.Properties.Resources.gray;
 					Console.WriteLine( ex.Message );
 					log( string.Format( "AXIS1 IP:{0} PORT:{1} Exception:{2}", MainFrm.IP_Axis1, MainFrm.PORT_Axis1, ex.Message ) );
 				}
@@ -286,6 +297,8 @@ namespace SensorGraph
 			try
 			{
 				save_data( eAxis.Axis1, ref times1, ref g1_1, ref g1_2, ref g1_3, ref g1_4 );
+
+				pbAxisConnState1.Image = SensorGraph.Properties.Resources.gray;
 			}
 			catch( Exception )
 			{
@@ -342,9 +355,11 @@ namespace SensorGraph
 
 					if( simul )
 					{
-						System.Threading.Thread.Sleep( 100 );
+						System.Threading.Thread.Sleep( MainFrm.interval_msec );
 
 						Random rand = new Random();
+
+						bytes[ 0 ] = 0x02;
 
 						bytes[ 3 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 4 ] = ( byte )rand.Next( -128, 127 );
@@ -354,6 +369,8 @@ namespace SensorGraph
 						bytes[ 8 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 9 ] = ( byte )rand.Next( -128, 127 );
 						bytes[ 10 ] = ( byte )rand.Next( -128, 127 );
+
+						bytes[ 19 ] = 0x03;
 					}
 					else
 					{
@@ -390,9 +407,12 @@ namespace SensorGraph
 					d[ 3 ] = convert_byte_to_val( bytes[ 9 ], bytes[ 10 ] );
 
 					bwGraphRefresh2.ReportProgress( 0, d );
+
+					pbAxisConnState2.Image = SensorGraph.Properties.Resources.green;
 				}
 				catch( Exception ex )
 				{
+					pbAxisConnState2.Image = SensorGraph.Properties.Resources.gray;
 					Console.WriteLine( ex.Message );
 					log( string.Format( "AXIS2 IP:{0} PORT:{1} Exception:{2}", MainFrm.IP_Axis2, MainFrm.PORT_Axis2, ex.Message ) );
 				}
@@ -404,6 +424,8 @@ namespace SensorGraph
 			try
 			{
 				save_data( eAxis.Axis2, ref times2, ref g2_1, ref g2_2, ref g2_3, ref g2_4 );
+
+				pbAxisConnState2.Image = SensorGraph.Properties.Resources.gray;
 			}
 			catch( Exception )
 			{
@@ -411,6 +433,12 @@ namespace SensorGraph
 			}
 		}
 
+		private void bwLog_DoWork( object sender, DoWorkEventArgs e )
+		{
+			while( true )
+			{
 
+			}
+		}
 	}
 }

@@ -37,8 +37,9 @@ namespace SensorGraph
 			this.panelView = new System.Windows.Forms.Panel();
 			this.panelTop = new System.Windows.Forms.Panel();
 			this.lbClock = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.timerClock = new System.Windows.Forms.Timer(this.components);
+			this.lbVersion = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panelMainMenu.SuspendLayout();
 			this.panelTop.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,6 +66,7 @@ namespace SensorGraph
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(161, 105);
 			this.btnExit.TabIndex = 2;
+			this.btnExit.TabStop = false;
 			this.btnExit.Text = "EXIT";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -77,7 +79,6 @@ namespace SensorGraph
 			this.btnSetupMenu.Name = "btnSetupMenu";
 			this.btnSetupMenu.Size = new System.Drawing.Size(161, 105);
 			this.btnSetupMenu.TabIndex = 1;
-			this.btnSetupMenu.TabStop = true;
 			this.btnSetupMenu.Text = "SETUP";
 			this.btnSetupMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.btnSetupMenu.UseVisualStyleBackColor = true;
@@ -91,7 +92,6 @@ namespace SensorGraph
 			this.btnMainMenu.Name = "btnMainMenu";
 			this.btnMainMenu.Size = new System.Drawing.Size(161, 105);
 			this.btnMainMenu.TabIndex = 0;
-			this.btnMainMenu.TabStop = true;
 			this.btnMainMenu.Text = "MAIN";
 			this.btnMainMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.btnMainMenu.UseVisualStyleBackColor = true;
@@ -109,6 +109,7 @@ namespace SensorGraph
 			// panelTop
 			// 
 			this.panelTop.BackColor = System.Drawing.SystemColors.Window;
+			this.panelTop.Controls.Add(this.lbVersion);
 			this.panelTop.Controls.Add(this.lbClock);
 			this.panelTop.Controls.Add(this.pictureBox1);
 			this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -129,6 +130,23 @@ namespace SensorGraph
 			this.lbClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.lbClock.DoubleClick += new System.EventHandler(this.lbClock_DoubleClick);
 			// 
+			// timerClock
+			// 
+			this.timerClock.Enabled = true;
+			this.timerClock.Interval = 1000;
+			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+			// 
+			// lbVersion
+			// 
+			this.lbVersion.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbVersion.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.lbVersion.Location = new System.Drawing.Point(1529, 0);
+			this.lbVersion.Name = "lbVersion";
+			this.lbVersion.Size = new System.Drawing.Size(180, 81);
+			this.lbVersion.TabIndex = 2;
+			this.lbVersion.Text = "v1.0.0.0";
+			this.lbVersion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -139,12 +157,6 @@ namespace SensorGraph
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
-			// 
-			// timerClock
-			// 
-			this.timerClock.Enabled = true;
-			this.timerClock.Interval = 1000;
-			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
 			// 
 			// MainFrm
 			// 
@@ -181,6 +193,7 @@ namespace SensorGraph
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label lbClock;
 		private System.Windows.Forms.Timer timerClock;
+		private System.Windows.Forms.Label lbVersion;
 	}
 }
 
